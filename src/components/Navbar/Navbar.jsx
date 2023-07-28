@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '../Icon/Icon'
+import CartWidget from '../CartWidget/CartWidget'
 import './Navbar.css'
 
 function Navbar() {
@@ -24,6 +25,7 @@ function Navbar() {
                 <a href="">Watch</a>
               </li>
             </ul>
+            <CartWidget/>
         </nav>
     </div>
   )

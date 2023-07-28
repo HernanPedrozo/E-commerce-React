@@ -1,10 +1,10 @@
 import React from 'react'
+import './ItemListContainer.css'
 
-function ItemListContainer() {
+function ItemListContainer({greeting}) {
+  
   return (
-    <div>ItemListContainer 
-        
-    </div>
+    <h1 className='title'>{greeting}</h1>
   )
 
 
