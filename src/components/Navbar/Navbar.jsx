@@ -1,34 +1,22 @@
-import React from 'react'
-import Icon from '../Icon/Icon'
 import CartWidget from '../CartWidget/CartWidget'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
-  return (
-    <div>
-        <nav>
-            <Icon/>
-            <ul>
-              <li>
-                <a href="">Store</a>
-              </li>
-              <li>
-                <a href="">Mac</a>
-              </li>
-              <li>
-                <a href="">iPad</a>
-              </li>
-              <li>
-                <a href="">iPhone</a>
-              </li>
-              <li>
-                <a href="">Watch</a>
-              </li>
-            </ul>
-            <CartWidget/>
-        </nav>
+return (
+<div>
+  <nav className='Navbar'>
+    <Icon />
+    <Link to='/'>Inicio</Link>
+    <div className='Categories'>
+      <Link to='/category/samsung' className='Option'>Samsung</Link>
+      <Link to='/category/motorola' className='Option'>Motorola</Link>
+      <Link to='/category/xiaomi' className='Option'>Xiaomi</Link>
     </div>
-  )
+    <CartWidget />
+  </nav>
+</div>
+)
 }
 
 export default Navbar
