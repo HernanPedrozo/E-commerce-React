@@ -1,4 +1,4 @@
-const product = [{
+const products = [{
         "id": "1",
         "category": "samsung",
         "name": "Samsung Galaxy samsungA53 5G 128 GB 6 GB RAM",
@@ -56,3 +56,30 @@ const product = [{
 
     }
 ]
+
+export const getProducts = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products)
+
+        }, 500)
+    })
+}
+
+export const getProductById = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() =>{
+            resolve(products.find(prod => prod.id === id))
+        }, 500)
+    })
+}
+
+export const getByCategory = (category) => {
+    return new Promise((resolve) => {
+        setTimeout(() =>{
+            const filteredProducts = products.filter((product) => product.category === category)
+            resolve(filteredProducts)
+            
+        }, 500)
+    })
+}

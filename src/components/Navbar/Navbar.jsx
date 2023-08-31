@@ -6,8 +6,8 @@ function Navbar() {
 return (
 <div>
   <nav className='Navbar'>
-    <Icon />
-    <Link to='/'>Inicio</Link>
+    
+    <Link to='/' className='Option'>Inicio</Link>
     <div className='Categories'>
       <Link to='/category/samsung' className='Option'>Samsung</Link>
       <Link to='/category/motorola' className='Option'>Motorola</Link>

@@ -1,4 +1,8 @@
-.title{
-    font-size: 35px;
-    color : #fff;
+.ItemListContainer{
+    justify-content:center;
+    display: grid;
+    text-align: center;
+    min-height: 80vh;
+    background-color:rgb(255, 255, 255);
+    background-color: aqua;
 }

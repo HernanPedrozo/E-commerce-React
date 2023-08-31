@@ -1,16 +1,16 @@
-nav{
+.Navbar{
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-ul{
+.Categories{
     list-style: none;
     display: flex;
     gap: 25px;
 }
 
-a{
+.Option{
     font-family: "San Francisco";
     letter-spacing: -0.1rem;
     line-height: 1;
@@ -20,7 +20,7 @@ a{
     text-decoration: none;
 }
 
-a::before{
+.Option::before{
     content: " ";
     position:absolute;
     left: 0;
@@ -34,7 +34,7 @@ a::before{
     transition: scale 0.25;
 }
 
-a::hover::before{
+.Option::hover::before{
     scale:1;
 }
 
