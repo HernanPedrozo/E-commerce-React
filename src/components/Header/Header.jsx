@@ -1,13 +1,12 @@
-import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import "./Header.css"
 
 function Header() {
   
   return (
-    <div className='header'>
+    <header className='header'>
       <Navbar/>
-    </div>
+    </header>
   )
 }
 

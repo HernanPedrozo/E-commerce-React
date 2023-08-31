@@ -1,4 +1,4 @@
-import Counter from "../ItemCount/ItemCount"
+import Counter from "../Counter/Counter"
 import "./ItemDetail.css"
 
 const ItemDetail = ({ id, name, image, category, description, price, stock }) => {
@@ -11,7 +11,7 @@ const ItemDetail = ({ id, name, image, category, description, price, stock }) =>
             <img src={image} alt= {name} className = "ItemImg" />
         </picture>
         <footer>
-        <ItemCount stock={stock} initial={1}/>
+        <Counter stock={stock} initial={1}/>
         </footer>
     </article>
     )

@@ -1,7 +1,7 @@
 import { useState} from 'react'
-import './ItemCount.css'
+import './Counter.css'
 
-function ItemCount() {
+const Counter = ({initial, stock}) => {
     
     const [ qty, setQty ] = useState(initial)
     
@@ -20,4 +20,4 @@ function ItemCount() {
     )
 }
 
-export default ItemCount
+export default Counter
