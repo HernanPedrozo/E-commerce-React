@@ -4,7 +4,7 @@ import './Navbar.css'
 
 function Navbar() {
 return (
-<div>
+<>
   <nav className='Navbar'>
     
     <div className='Categories'>
@@ -13,10 +13,9 @@ return (
       <Link to='/category/motorola' className='link'>Motorola</Link>
       <Link to='/category/xiaomi' className='link'>Xiaomi</Link>
     </div>
-    
-    <CartWidget />
+    <CartWidget/>
   </nav>
-</div>
+</>
 )
 }
 
