@@ -14,8 +14,9 @@ function App() {
         <Header/>
         <Routes>
           <Route path='/' element={<ItemListContainer greeting='Catalogo'/> }/>
-          <Route path='/category/:categoryId' element={ <ItemListContainer greeting="catalogo"/> } />
+          <Route path='/category/:categoryId' element={ <ItemListContainer greeting="Listado de productos filtrado"/> } />
           <Route path='/detail/:productId' element={<ItemDetailContainer/>}/>
+          <Route path='*' element={<h1>ERROR 404</h1>}/>
         </Routes>
       </BrowserRouter>
     </div>

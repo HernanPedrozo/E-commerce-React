@@ -6,7 +6,7 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 
 const ItemDetailContainer = () => {
 
-const [product, setProduct] = useState()    
+    const [product, setProduct] = useState({})    
 
 const { productId } = useParams()
 
@@ -15,8 +15,11 @@ useEffect(() =>{
     getProductById(productId).then(response => {
         setProduct(response)
     })
-},[])
+},[productId])
 
+if(!productId) {
+    return <h1>El producto no existe</h1>
+}
 return (
     <>
         <h1>Detalle</h1>

@@ -14,21 +14,19 @@ function ItemListContainer({greeting}) {
 
   useEffect(() => {
     setLoading(true)
-if (!categoryId){
-    getProducts().then(products => {
-        setProducts(products)
-        }).finally(() =>{ 
-            setLoading(false)
-        })
-}else{
-    getByCategory(categoryId).then(products => {
-        setProducts(products)
-        })
-    }
-}, [categoryId])  
+    const asyncFunction = categoryId ? getByCategory : getProducts
+    
+    asyncFunction(categoryId)
+    .then(response => {
+      setProducts(response)
+    })
+    .finally(() =>{ 
+      setLoading(false)
+  })
+}, [categoryId])
 
 if (loading){
-return  <h1>Cargando...</h1>
+return ( <h1>Cargando...</h1> ) 
 }
 
 
