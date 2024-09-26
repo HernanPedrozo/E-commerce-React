@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import {useState} from 'react'
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
+import "./ItemDetailContainer.css"
 
 const ItemDetailContainer = () => {
 
@@ -22,7 +23,6 @@ if(!productId) {
 }
 return (
     <>
-        <h1>Detalle</h1>
         <ItemDetail {...product}/>
     </>
     )
