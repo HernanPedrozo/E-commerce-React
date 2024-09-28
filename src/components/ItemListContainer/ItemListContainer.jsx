@@ -20,6 +20,9 @@ function ItemListContainer({greeting}) {
     .then(response => {
       setProducts(response)
     })
+    .catch(error => {
+      console.log('Fallo en la request', error)
+    })
     .finally(() =>{ 
       setLoading(false)
   })

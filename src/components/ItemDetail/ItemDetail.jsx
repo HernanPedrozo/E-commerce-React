@@ -1,11 +1,15 @@
 import Counter from "../Counter/Counter"
+import { useContext } from "react"
+import { ItemContext } from "../../contexts/ItemContext"
+import Container from "../Container/Container"
 import "./ItemDetail.css"
 
-const ItemDetail = ({ id, name, image, price, stock }) => {
+const ItemDetail = ( {id, name, image, price, stock} ) => {
 
+const {isInCart, addItem, removeItem} = useContext(ItemContext)
 
 return (
-<div className="container">
+<Container>
     <article className="ItemDetail">
         <section className="half-section__img">
             <picture>
@@ -17,10 +21,12 @@ return (
             <h2 className="price">${price}</h2>
             <footer>
                 <Counter stock={stock} initial={1} />
+                <button disabled={isInCart(id)} className="buttonShore"  onClick={()=> addItem({id,name,image,price,stock})}>Agregar al carrito</button>
+                <button onClick={()=> removeItem(id)}>Borrar del carrito</button>
             </footer>
         </section>
     </article>
-</div>
+</Container >
 )
 }
 
