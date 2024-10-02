@@ -1,26 +1,21 @@
-import { useContext} from 'react'
-import { ItemContext } from "../../contexts/ItemContext"
-import { useState} from 'react'
 import './Counter.css'
 
 
-const Counter = ({initial, stock, items}) => {
-
-    const {onAdd} = useContext(ItemContext)   
-    const [ qty, setQty ] = useState(initial)
-    
-    const addProduct = (num) => {
-        console.log("stock en qty:", typeof qty); // Verifica el tipo de qty
-        onAdd(items, qty) // Pasa al qty directamente
-        setQty(qty + num)
+const Counter = ({quantity, setQuantity, stock, item, initial}) => {
+    const changeQuantityOfProduct = (num) => {
+        setQuantity(quantity + num)
     }
+
+
+    const disableMinusButton = quantity === initial;
+    const disablePlusButton = quantity === stock;
 
     return (
         <div className='count-container'>
             <div className="count-container__contador">
-                <button className="count-container__button" onClick={()=> addProduct(-1)} disabled={qty === initial}>-</button>
-                <span className="count-container__qty">{qty}</span>
-                <button className="count-container__button" onClick={()=> addProduct(+1)} disabled={qty === stock}>+</button>
+                <button className="count-container__button" onClick={()=> changeQuantityOfProduct(-1)} disabled={disableMinusButton}>-</button>
+                <span className="count-container__qty">{quantity}</span>
+                <button className="count-container__button" onClick={()=> changeQuantityOfProduct(+1)} disabled={disablePlusButton}>+</button>
             </div>
         </div>
     )

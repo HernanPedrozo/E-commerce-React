@@ -1,6 +1,5 @@
 import { useContext } from "react"
 import { ItemContext } from "../../contexts/ItemContext"
-import Counter from "../Counter/Counter"
 import { BackSpace } from "../BackSpace/BackSpace"
 import Container from "../Container/Container"
 import TrashIcon from "../TrashIcon/TrashIcon"
@@ -25,19 +24,17 @@ function Cart() {
         <Container>
             <div className="products" >
             <h1 className="cart_title" >Carrito de compras</h1>
-            {
-                items.map(({ id, name, price, image }) => (
-                    <table className="table table_cart">
-                    <tbody className="table_body" >
-                        <tr>
+            <table className="table table_cart">
+                <tbody className="table_body" >
+                <tr>
                             <th></th>
                             <th>Producto</th>
                             <th>Cantidad</th>
                             <th>Precio $</th>
                             <th>Total $</th>
-                            <th></th>
-                            <th></th>
                         </tr>
+                {
+                items.map(({ id, name, price, image, quantity}) => (
                         <tr className="productos">
                             <td>
                             <img className="cart_img" src={image} alt={name} />
@@ -48,23 +45,23 @@ function Cart() {
                                 </span>
                             </td>
                             <td>
-                                {stock}
+                                {quantity}
                             </td>
                             <td>
                                 {price}
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td>{price * quantity}</td>
                             <td>
                             <button className="btn_delete" onClick={()=> removeItem(id)}>
                                 <BackSpace/>
                                 </button>
                             </td>
                         </tr>
-                    </tbody>
-                    </table>
                 ))
             }
+            </tbody>
+            </table>
+
             <div className="total_price" >
 
                 <h3>Total: {totalPrice}</h3>

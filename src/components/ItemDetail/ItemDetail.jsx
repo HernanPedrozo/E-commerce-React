@@ -1,13 +1,26 @@
 import Counter from "../Counter/Counter"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { ItemContext } from "../../contexts/ItemContext"
 import Container from "../Container/Container"
 import "./ItemDetail.css"
+
+const INTIAL_PRODUCT_QUANTITY = 1
+
+
 
 const ItemDetail = ( {id, name, image, price, stock} ) => {
 
 const {isInCart, addItem, removeItem} = useContext(ItemContext)
 
+const [ quantity, setQuantity ] = useState(INTIAL_PRODUCT_QUANTITY)
+
+const newItem = {
+    id,
+    name,
+    image,
+    price,
+    stock
+}
 return (
 <Container>
     <article className="ItemDetail">
@@ -21,8 +34,8 @@ return (
             <h2 className="price">${price}</h2>
             <h3>Stock: {stock}</h3>
             <footer>
-                <Counter stock={stock} initial={1} />
-                <button disabled={isInCart(id)} className="btn btn_Item btn_addItem"  onClick={()=> addItem({id,name,image,price,stock})}>Agregar al carrito</button>
+                <Counter quantity={quantity} setQuantity={setQuantity} item={newItem} stock={stock} initial={INTIAL_PRODUCT_QUANTITY} />
+                <button className="btn btn_Item btn_addItem"  onClick={()=> addItem(newItem, quantity)}>Agregar al carrito</button>
                 <button className="btn btn_Item btn_remove " onClick={()=> removeItem(id)}>Borrar del carrito</button>
             </footer>
         </section>

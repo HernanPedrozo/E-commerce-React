@@ -13,34 +13,35 @@ const totalPrice = items.reduce((total, item) => item.price + total, 0).toLocale
     currency: 'USD',
 })
 
-
 const isInCart = (itemId)  => {
-    return !!items.find(itemInCart => itemInCart.id === itemId)
+    return items.some(itemInCart => itemInCart.id === itemId)
 }
 
-const addItem = (item, stock) =>{
-    if(stock == null || isNaN(stock)){
-        console.error("quantity is undefined or not a number", stock)
-        return; // Detiene la ejecución si stock no es valido
+const addItem = (item, quantity) => {
+    console.log('ejecutando addItem')
+
+    if (quantity == null || isNaN(quantity)) {
+        console.error("quantity is undefined or not a number", quantity);
+        return; 
     }
-    if(isInCart(item.id)) {
-        const newItem = items.map(i => {
-            if (isInCart.id === item.id) {
-                return {...item, stock:i.stock+stock}
-            }else{
-                return i
+
+    if (isInCart(item.id)) {
+        const newItem = items.map(itemInCart => {
+            if (itemInCart.id === item.id) {
+                return { ...itemInCart, quantity: itemInCart.quantity + quantity }; 
+            } else {
+                return itemInCart;
             }
-            } 
-        )
-        setItems(newItem)
-    } else{
-        setItems([...items, {...items, stock}])
-    }
-    
-}
+        });
+        setItems(newItem);
 
-const onAdd = (item, stock) =>{
-    addItem(item,stock)
+    } else {
+        setItems([...items, { ...item, quantity }]); 
+    }
+};
+
+const onAdd = (item, quantity) =>{
+    addItem(item, quantity)
 }
 
 const removeItem = (itemId) =>{
