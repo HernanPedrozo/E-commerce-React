@@ -1,7 +1,20 @@
 .itemsQuantity{
     color: white;
+    background-color: black;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .cartwidget {
     cursor: pointer;
+}
+.cartQuantity{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.icon_cart:hover {
+    color: red;
 }

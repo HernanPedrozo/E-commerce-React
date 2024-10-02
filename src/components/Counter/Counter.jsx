@@ -1,11 +1,17 @@
+import { useContext} from 'react'
+import { ItemContext } from "../../contexts/ItemContext"
 import { useState} from 'react'
 import './Counter.css'
 
-const Counter = ({initial, stock}) => {
-    
+
+const Counter = ({initial, stock, items}) => {
+
+    const {onAdd} = useContext(ItemContext)   
     const [ qty, setQty ] = useState(initial)
     
     const addProduct = (num) => {
+        console.log("stock en qty:", typeof qty); // Verifica el tipo de qty
+        onAdd(items, qty) // Pasa al qty directamente
         setQty(qty + num)
     }
 

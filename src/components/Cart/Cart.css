@@ -1,0 +1,58 @@
+
+.table{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table{
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+}
+
+.table_cart{
+    border: 1px solid #ddd;
+}
+
+.table_body{
+    position: relative;
+}
+
+.table>tbody>tr>th{
+    vertical-align: middle;
+}
+
+th{
+    text-align: left;
+}
+
+.btn_delete{
+    border: 0;
+    color: #fff;
+    background-color: #fff;
+}
+
+img{
+    border: 0px;
+    vertical-align: middle;
+}
+.table_cart img{
+    width: 80px;
+}
+.cart_img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cart_title{
+    margin: 20px  0 20px 0;
+}
+
+.total_price{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

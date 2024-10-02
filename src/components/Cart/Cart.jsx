@@ -1,7 +1,10 @@
 import { useContext } from "react"
 import { ItemContext } from "../../contexts/ItemContext"
-
+import Counter from "../Counter/Counter"
+import { BackSpace } from "../BackSpace/BackSpace"
 import Container from "../Container/Container"
+import TrashIcon from "../TrashIcon/TrashIcon"
+import "./Cart.css"
 
 function Cart() {
     const {items, removeItem, totalPrice, clearCart, amountOfItemsInCart} = useContext(ItemContext)
@@ -20,24 +23,57 @@ function Cart() {
 
     return (
         <Container>
-            <h1>Carrito de compras - precio total: {totalPrice}</h1>
-            <button onClick={clearCart}>
-                Vaciar carrito
-            </button>
+            <div className="products" >
+            <h1 className="cart_title" >Carrito de compras</h1>
             {
                 items.map(({ id, name, price, image }) => (
-                    <div>
-                        <img width={150} src={image} alt={name} />
-                        <h2>
-                           {name}
-                        </h2>
-                        <span>
-                            {price}
-                        </span>
-                        <button onClick={()=> removeItem(id)}>Borrar del carrito</button>
-                    </div>
+                    <table className="table table_cart">
+                    <tbody className="table_body" >
+                        <tr>
+                            <th></th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio $</th>
+                            <th>Total $</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr className="productos">
+                            <td>
+                            <img className="cart_img" src={image} alt={name} />
+                            </td>
+                            <td className="cart_name">  
+                                <span>
+                                    {name}
+                                </span>
+                            </td>
+                            <td>
+                                {stock}
+                            </td>
+                            <td>
+                                {price}
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            <button className="btn_delete" onClick={()=> removeItem(id)}>
+                                <BackSpace/>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
                 ))
             }
+            <div className="total_price" >
+
+                <h3>Total: {totalPrice}</h3>
+
+            <button className="btn_delete" onClick={clearCart}>
+                <TrashIcon/>
+            </button>
+            </div>
+            </div>
         </Container>
     )
 }
