@@ -18,7 +18,6 @@ const isInCart = (itemId)  => {
 }
 
 const addItem = (item, quantity) => {
-    console.log('ejecutando addItem')
 
     if (quantity == null || isNaN(quantity)) {
         console.error("quantity is undefined or not a number", quantity);
