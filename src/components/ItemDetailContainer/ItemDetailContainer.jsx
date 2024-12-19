@@ -3,19 +3,34 @@ import {useParams} from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import {getProductById} from "../../asyncMock"
 import "./ItemDetailContainer.css"
+import { getFirestore, getDoc, doc} from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
 const [product, setProduct] = useState({})    
-
-const { productId } = useParams()
+const [loading, setLoading] = useState(true)
+const { id } = useParams()
 
 useEffect(() =>{
-    getProductById(productId).then(response => {
-        setProduct(response)
-    }).catch(error => {console.log('Fallo en la request en el detalle del producto', error)})
-},[productId])
 
-if(!productId) {
+    const db = getFirestore()
+        
+        const refDoc = doc(db,"items", id )
+        
+        getDoc(refDoc).then((snapshot) => {
+            setProduct({...snapshot.data(), id: snapshot.id})
+        })
+        .catch((error)=>{
+        console.log(error)
+        }) .finally(() =>{ 
+            setLoading(false)
+        })
+},[id])
+
+if (loading){
+    return ( <h1>Cargando...</h1> ) 
+    }
+
+if(!id) {
     return <h1>El producto no existe</h1>
 }
 

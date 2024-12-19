@@ -1,39 +1,44 @@
 
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { getProducts, getByCategory } from '../../asyncMock'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import './ItemListContainer.css'
+import { getFirestore, getDocs, collection, where, query} from 'firebase/firestore'
 
 function ItemListContainer({greeting}) {
 
   const [products, setProducts] = useState ([])
-  const [loading, setLoading] = useState(false)
-  const { categoryId } = useParams()
+  const [loading, setLoading] = useState(true)
+  const { id } = useParams()
 
   useEffect(() => {
-    setLoading(true)
-    const asyncFunction = categoryId ? getByCategory : getProducts
     
-    asyncFunction(categoryId)
-    .then(response => {
-      setProducts(response)
+    const db = getFirestore()
+    
+    const refCollection = !id  
+    ? collection(db,'items') 
+    : query(collection (db,'items'),where("categoryId", "==", id)) 
+    
+    getDocs(refCollection).then((snapshot) => {
+      setProducts(
+      snapshot.docs.map((doc) => {
+        return {id: doc.id, ...doc.data()}
+      })
+    )
     })
-    .catch(error => {
-      console.log('Fallo en la request', error)
+    .catch((error)=>{
+      console.log(error)
     })
     .finally(() =>{ 
       setLoading(false)
-  })
-}, [categoryId])
+    })
+    }, [id])
 
 if (loading){
 return ( <h1>Cargando...</h1> ) 
 }
 
-
-  console.log ()
   return (
     <div className="ItemListContainer">
     <h1 className="title">{greeting}</h1>

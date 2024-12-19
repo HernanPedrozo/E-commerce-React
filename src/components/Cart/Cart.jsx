@@ -34,14 +34,14 @@ function Cart() {
                             <th>Total $</th>
                         </tr>
                 {
-                items.map(({ id, name, price, image, quantity}) => (
-                        <tr className="productos">
+                items.map(({ id, title, price, img, quantity}) => (
+                        <tr className="productos" key={id}>
                             <td>
-                            <img className="cart_img" src={image} alt={name} />
+                            <img className="cart_img" src={img} alt={title} />
                             </td>
                             <td className="cart_name">  
                                 <span>
-                                    {name}
+                                    {title}
                                 </span>
                             </td>
                             <td>

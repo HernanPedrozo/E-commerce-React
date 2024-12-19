@@ -8,7 +8,7 @@ const INTIAL_PRODUCT_QUANTITY = 1
 
 
 
-const ItemDetail = ( {id, name, image, price, stock} ) => {
+const ItemDetail = ( {id, title, img, price, stock} ) => {
 
 const {isInCart, addItem, removeItem} = useContext(ItemContext)
 
@@ -16,8 +16,8 @@ const [ quantity, setQuantity ] = useState(INTIAL_PRODUCT_QUANTITY)
 
 const newItem = {
     id,
-    name,
-    image,
+    title,
+    img,
     price,
     stock
 }
@@ -26,11 +26,11 @@ return (
     <article className="ItemDetail">
         <section className="half-section__img">
             <picture>
-                <img src={image} alt={name} className="ItemImgDetail" />
+                <img src={img} alt={title} className="ItemImgDetail" />
             </picture>
         </section>
         <section className="half-section__text">
-            <h1 className="DetailName">{name}</h1>
+            <h1 className="DetailName">{title}</h1>
             <h2 className="price">${price}</h2>
             <h3>Stock: {stock}</h3>
             <footer>

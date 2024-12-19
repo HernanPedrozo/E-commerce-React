@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 import './Item.css'
 
-const Item = ({id,name,image,price}) => {
+const Item = ({id,title,img,price}) => {
 
 return (
 <article className="CardItem">
     <header className="Header">
-        <h3 className="ItemHeader"> {name} </h3>
+        <h3 className="ItemHeader"> {title} </h3>
     </header>
     <picture>
-        <img src={image} alt={name} className="ItemImg" />
+        <img src={img} alt={title} className="ItemImg" />
     </picture>
     <section>
         <p className="Info">${price}</p>

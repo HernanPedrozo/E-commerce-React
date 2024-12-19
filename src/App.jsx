@@ -17,9 +17,9 @@ return (
       <Header />
       <Routes>
         <Route path='/' element={<ItemListContainer greeting='Catalogo' /> }/>
-        <Route path='/category/:categoryId' element={ <ItemListContainer greeting="Listado de productos filtrado" /> }
+        <Route path='/category/:id' element={ <ItemListContainer greeting="Listado de productos filtrado" /> }
         />
-        <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
+        <Route path='/detail/:id' element={<ItemDetailContainer />}/>
 
         <Route path='/cart' element={<Cart/>}/>
 

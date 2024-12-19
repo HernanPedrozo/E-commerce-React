@@ -1,15 +1,10 @@
-.icon_color{
-    color:black;
-    background-color: white;
-}
 
-.Trash{
+.trash{
     cursor: pointer;
     border: 0;
-    color: #fff;
-    background-color: #fff;
+    color: black;
 }
 
-.icon_color:hover{
-    color: red;
+.trash:hover{
+    color:red;
 }

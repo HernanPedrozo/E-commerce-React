@@ -1,9 +1,9 @@
 .delete{
     border: 0;
-    color: #fff;
-    background-color: #fff;
+    color: black;
 }
 
 .delete:hover{
     cursor: pointer;
+    color: red;
 }
