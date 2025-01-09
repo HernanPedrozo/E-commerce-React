@@ -21,6 +21,12 @@ const newItem = {
     price,
     stock
 }
+
+const handleAdd = () => {
+    addItem(newItem, quantity)
+    setQuantity(1)
+}
+
 return (
 <Container>
     <article className="ItemDetail">
@@ -35,7 +41,7 @@ return (
             <h3>Stock: {stock}</h3>
             <footer>
                 <Counter quantity={quantity} setQuantity={setQuantity} item={newItem} stock={stock} initial={INTIAL_PRODUCT_QUANTITY} />
-                <button className="btn btn_Item btn_addItem"  onClick={()=> addItem(newItem, quantity)}>Agregar al carrito</button>
+                <button className="btn btn_Item btn_addItem"  onClick={handleAdd}>Agregar al carrito</button>
                 <button className="btn btn_Item btn_remove " onClick={()=> removeItem(id)}>Borrar del carrito</button>
             </footer>
         </section>
